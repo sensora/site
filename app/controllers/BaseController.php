@@ -1,6 +1,8 @@
 <?php
 class BaseController extends Controller
 {
+    protected $currentUser = false;
+
     public function __construct()
     {
         /**
@@ -15,6 +17,8 @@ class BaseController extends Controller
                 Event::fire('clockwork.controller.end');
             });
         }
+
+        $this->currentUser = Auth::user();
     }
 
     /**

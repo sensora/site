@@ -3,8 +3,15 @@ class Sensor extends Eloquent
 {
     protected $table = 'sensors';
 
-    public user()
+    protected $fillable = ['label', 'latitude', 'longitude'];
+
+    protected $rules = [
+        'latitude'  => 'required',
+        'longitude' => 'required',
+    ];
+
+    public function user()
     {
-        $this->belongsTo('User');
+        return $this->belongsTo('User');
     }
 }
