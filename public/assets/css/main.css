@@ -6,3 +6,11 @@
     margin-top: 22px;
     display: block;
 }
+
+.opaque {
+    opacity: .5;
+}
+
+.small-text-left {
+    font-size: .4em;
+}

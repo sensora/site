@@ -14,4 +14,9 @@ class Sensor extends Eloquent
     {
         return $this->belongsTo('User');
     }
+
+    public function getNameAttribute()
+    {
+        return empty($this->label) ? $this->uuid : sprintf('%s <span class="opaque">( %s )</span>', $this->label, $this->uuid);
+    }
 }

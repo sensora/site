@@ -18,7 +18,11 @@ Event::listen('auth.login', function($user) {
 Event::listen('sensor.register', function($sensor) {
     try {
         $sensor->uuid = Uuid::uuid4();
-
-        $sensor->save();
     } catch (UnsatisfiedDependencyException $e) {}
+
+    if ( empty($sensor->label) ) {
+        $sensor->label = $sensor->user->email . '-' . str_random(10);
+    }
+
+    $sensor->save();
 });

@@ -12,7 +12,7 @@
             <li class="has-dropdown">
                 <a href="{{ route('dashboard.sensors.index') }}">Sensores</a>
                 <ul class="dropdown">
-                    <li><a href="{{ route('dashboard.sensors.add') }}">Nuevo</a></li>
+                    <li><a href="{{ route('dashboard.sensors.add') }}"><i class="fa fa-plus"></i> Nuevo</a></li>
                 </ul>
             </li>
         </ul>

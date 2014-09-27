@@ -12,7 +12,9 @@ class DashboardSensorsController extends BaseController
 
     public function index()
     {
-        return View::make('dashboard.sensors.index');
+        $sensors = $this->currentUser->sensors;
+
+        return View::make('dashboard.sensors.index', compact('sensors'));
     }
 
     public function getAdd()
