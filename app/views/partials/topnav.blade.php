@@ -1,9 +1,8 @@
-<div class="contain-to-grid sticky">
-    <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-            <li class="name">
-                <h1><a href="{{ route('home') }}"><img src="{{ asset('assets/img/misc/sensoraName.png') }}" alt="Sensora"></a></h1>
-            </li>
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="{{ route('home') }}"><span class="logo"></span></a></h1>
+        </li>
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
 
@@ -34,4 +33,3 @@
             </ul>
         </section>
     </nav>
-</div>
