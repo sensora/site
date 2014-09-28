@@ -66,6 +66,6 @@ Route::group(['prefix' => 'api'], function() {
 
 		Route::get('{uuid}', ['as' => 'api.sensor.upload', 'uses' => 'ApiController@sensorInfo']);
 
-		Route::get('{uuid}/{from}/{to}', ['as' => 'api.sensor.info', 'uses' => 'ApiController@locateSensors']);
+		Route::get('{uuid}/{from?}/{to?}', ['as' => 'api.sensors.data', 'uses' => "ApiController@sensorData"]);
 	});
 });

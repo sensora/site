@@ -90,18 +90,26 @@ class ApiController extends BaseController
                 ->setCallback(Input::get('callback'));
     }
 
-    public function locateSensors($latitude = null, $longitude = null, $areasize = '2000')
+    public function sensorData($uuid, $from = null, $to = null)
+    {
+        $result = $this->sensor->with('data')->where('uuid', '=', $uuid)->get();
+
+        return Response::json($result)
+                ->setCallback(Input::get('callback'));
+    }
+
+    public function locateSensors($latitude = null, $longitude = null, $areasize = '150')
     {
         $sensors = $this->sensor->near($latitude, $longitude, $areasize);
 
-        $response = [];
-        foreach ($sensors as $sensor) {
-            $sensor->data = $this->data->where('sensor_id', '=', $sensor->id)->get();
+        // $response = [];
+        // foreach ($sensors as $sensor) {
+        //     $sensor->data = $this->data->where('sensor_id', '=', $sensor->id)->get();
 
-            $response[] = $sensor;
-        }
+        //     $response[] = $sensor;
+        // }
 
-        return Response::json($response)
+        return Response::json($sensors)
                 ->setCallback(Input::get('callback'));
     }
 }
