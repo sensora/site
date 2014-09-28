@@ -6,16 +6,21 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             zoomControl: true
         },
-        map = new google.maps.Map(document.getElementById("sensor_map"), mapOptions),
+        map,
+        marker;
+
+    if ( $('#sensor_map').is(":visible") ) {
+        map = new google.maps.Map(document.getElementById("sensor_map"), mapOptions);
         marker = new google.maps.Marker({
             position: center,
             map: map,
             draggable: true
         });
 
-    google.maps.event.addListener(marker, 'dragend', function() {
-        updateCoordsFields(marker.getPosition().lat(), marker.getPosition().lng());
-    });
+        google.maps.event.addListener(marker, 'dragend', function() {
+            updateCoordsFields(marker.getPosition().lat(), marker.getPosition().lng());
+        });
+    }
 
     var getLocation = function() {
         if(navigator.geolocation) {
@@ -63,13 +68,41 @@
             getLocation();
         });
 
-        var latitude = $('#latitude'),
-            latitude = $('#longitude');
+        var latitude = $('#latitude').val(),
+            longitude = $('#longitude').val();
 
-        if ( latitude != '' && longitude != '' ) {
+        if ( typeof latitude != 'undefined' && typeof longitude != 'undefined' && latitude != '' && longitude != '' ) {
             var location = new google.maps.LatLng(latitude, longitude);
-            marker.setPosition(initialLocation);
-            map.setCenter(initialLocation);
+            marker.setPosition(location);
+            map.setCenter(location);
         }
+
+        var listLatitude, listLongitude;
+
+        $('.openMapModal').click(function(e) {
+            e.preventDefault();
+
+            listLatitude = $(this).data('latitude');
+            listLongitude = $(this).data('longitude');
+
+            $('#modalMap').foundation('reveal', 'open');
+        });
+
+        $(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+            var modal = $(this);
+
+            var listMap = new google.maps.Map(document.getElementById("sensor_map"), mapOptions),
+                listMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(listLatitude, listLongitude),
+                    map: listMap,
+                    draggable: true
+                });
+        });
+
+        $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
+            var modal = $(this);
+
+            $('#sensor_map', modal).html('');
+        });
     });
 }(jQuery, window));
