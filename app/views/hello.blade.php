@@ -71,7 +71,7 @@
 				<h2>The possibilities are endless</h2>
 				<div class="row">
 					<div class="large-6 small-12 columns">
-						<h3>Improving the movility</h3>
+						<h3>Improving the mobility</h3>
 						<p>
 							How about an app which not only gives you a route for your destination but also dodge the rainy clouds when possible. <br />
 							Where geographical apps just give you straight routes and the wheater apps only say your city is under rain, Sensora based apps 
