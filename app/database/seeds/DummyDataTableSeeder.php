@@ -25,14 +25,14 @@ class DummyDataTableSeeder extends Seeder {
                     'label'     =>  mt_rand(0, 1) == 1 ? $faker->word : $user->email . '-' . str_random(10),
                     'uuid'      =>  $faker->uuid,
                     'status'    =>  mt_rand(0, 10) > 5 ? true : false,
-                    'elevation' =>  mt_rand(0, 1) == 1 ? '' : $faker->numberBetween(500, 2500),
-                    'latitude'  =>  $faker->randomFloat(6, 15.274827, 48.683862),
-                    'longitude' =>  $faker->randomFloat(6, -73.163520, -125.340226),
+                    'elevation' =>  mt_rand(0, 1) == 1 ? '' : $faker->numberBetween(2250, 3930),
+                    'latitude'  =>  $faker->randomFloat(6, 19.616939, 19.192087),
+                    'longitude' =>  $faker->randomFloat(6, -98.852190, -99.321855),
                 ]);
 
                 if ( $sensor->status ) {
                     foreach (range(0, 1000) as $data) {
-                        list($mintemp, $maxtemp) = array(mt_rand(0, 10), mt_rand(30, 50));
+                        list($mintemp, $maxtemp) = array(mt_rand(0, 10), mt_rand(20, 35));
 
                         $data = Data::create([
                             'sensor_id'     =>  $sensor->id,

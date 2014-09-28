@@ -69,6 +69,17 @@ class ApiController extends BaseController
 
     public function sensorUpload()
     {
+        try {
+            $sensor = $this->sensor->where('uuid', '=', $sensorId)->firstOrFail();
+        }catch(ModelNotFoundException $e) {
+            return Response::json(array(
+                'success'   =>  false,
+                'error'     =>  array(
+                    'message'   =>  'Sensor not found.'
+                ),
+            ))->setCallback(Input::get('callback'));
+        }
+
         $temperature    =   Input::get('temperature');
         $moisture       =   Input::get('moisture');
         $altitude       =   Input::get('altitude');
@@ -77,6 +88,26 @@ class ApiController extends BaseController
         $light          =   Input::get('light');
 
         $created_at     =   Input::get('created_at');
+
+        $dataRaw = [
+            'sensor_id'     =>  $sensor->id,
+            'temperature'   =>  $temperature,
+            'moisture'      =>  $moisture,
+            'altitude'      =>  $altitude,
+            'pressure'      =>  $pressure,
+            'noise'         =>  $sound,
+            'light'         =>  $light,
+        ];
+
+        if ( $created_at ) {
+            $dataRaw['created_at'] =    $created_at;
+        }
+
+        $this->data->create($dataRaw);
+
+        return Response::json([
+            'success'   =>  true,
+        ])->setCallback(Input::get('callback'));
     }
 
     public function sensorInfo($uuid = null)
@@ -98,7 +129,7 @@ class ApiController extends BaseController
                 ->setCallback(Input::get('callback'));
     }
 
-    public function locateSensors($latitude = null, $longitude = null, $areasize = '150')
+    public function locateSensors($latitude = null, $longitude = null, $areasize = '5')
     {
         $sensors = $this->sensor->near($latitude, $longitude, $areasize);
 
