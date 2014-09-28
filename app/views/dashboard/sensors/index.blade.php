@@ -3,17 +3,17 @@
 @section('title', 'Sensores')
 
 @section('content')
-    <h1>Sensores <a class="small-text-left" href="{{ route('dashboard.sensors.add') }}">Agregar <i class="fa fa-plus"></i></a></h1>
+    <h1>Sensors <small><a href="{{ route('dashboard.sensors.add') }}">Add <i class="fa fa-plus"></i></a></small></h1>
 
     <table class="large-12 columns" role="grid">
         <thead>
             <tr>
-                <th>Identificador</th>
+                <th>Identifier/Label</th>
                 <th>Latitude</th>
-                <th>longitud</th>
-                <th>Altitud</th>
-                <th>Estado</th>
-                <th>Controles</th>
+                <th>Longitude</th>
+                <th>Altitude</th>
+                <th>Status</th>
+                <th>Controls</th>
             </tr>
         </thead>
         <tbody>
@@ -34,10 +34,15 @@
             @else
             <tr>
                 <td colspan="5">
-                    No tienes sensores registrados.
+                    You don't have any sensors registered.
                 </td>
             </tr>
             @endif
         </tbody>
     </table>
+
+    <div id="modalMap" class="reveal-modal" data-reveal>
+        <div id="sensor_map"></div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 @stop

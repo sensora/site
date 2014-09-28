@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
-@section('title', 'Nuevo sensor')
+@section('title', 'New Sensor')
 
 @section('content')
-    <h1>Nuevo sensor</h1>
+    <h1>New Sensor</h1>
 
     {{ Form::open(['route' => 'dashboard.sensors.add']) }}
         <div class="row">
             <div class="large-12 columns">
-                <label for="latitude">Nombre
+                <label for="latitude">Label
                     {{ Form::text('label') }}
                 </label>
             </div>
@@ -18,12 +18,12 @@
                 <div id="sensor_map"></div>
             </div>
             <div class="large-6 columns">
-                <label for="latitude">Latitud
+                <label for="latitude">Latitude
                     {{ Form::text('latitude', null, ['id' => 'latitude']) }}
                 </label>
             </div>
             <div class="large-5 columns">
-                <label for="latitude">Longitud
+                <label for="latitude">Longitude
                     {{ Form::text('longitude', null, ['id' => 'longitude']) }}
                 </label>
             </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="large-12 columns">
-                {{ Form::submit('Agregar', ['class' => 'button']) }}
+                {{ Form::submit('Add', ['class' => 'button']) }}
             </div>
         </div>
     {{ Form::close() }}

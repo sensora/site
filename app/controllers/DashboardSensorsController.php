@@ -29,19 +29,45 @@ class DashboardSensorsController extends BaseController
 
         if ( ! $this->sensor->save() ) {
             return Redirect::route('dashboard.sensors.add')
-                    ->withinpu()
+                    ->withInput()
                     ->withErrors( $this->sensor->getErrors() );
         }
 
         Event::fire('sensor.register', [$this->sensor]);
 
         return Redirect::route('dashboard.sensors.index')
-                ->withSuccess('Sensor agregado.');
+                ->withSuccess('Sensor added succesfully.');
     }
 
     public function getEdit($id)
     {
-        //
+        $this->sensor = $this->sensor->find($id);
+
+        if ( $this->sensor->user->id != $this->currentUser->id ) {
+            return Redirect::route('dashboard.sensors.index');
+        }
+
+        return View::make('dashboard.sensors.edit', ['sensor' => $this->sensor]);
+    }
+
+    public function postEdit($id)
+    {
+        $this->sensor = $this->sensor->find($id);
+
+        if ( $this->sensor->user->id != $this->currentUser->id ) {
+            return Redirect::route('dashboard.sensors.index');
+        }
+
+        $this->sensor->fill( Input::all() );
+
+        if ( ! $this->sensor->save() ) {
+            return Redirect::route('dashboard.sensors.edit', $this->sensor->id)
+                    ->withInput()
+                    ->withErrors( $this->sensor->getErrors() );
+        }
+
+        return Redirect::route('dashboard.sensors.edit', $this->sensor->id)
+                ->withSuccess('Sensor edited succesfully.');
     }
 
     public function getDelete($id)
