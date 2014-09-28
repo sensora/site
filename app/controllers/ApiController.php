@@ -6,14 +6,16 @@ class ApiController extends BaseController
     protected $user;
     protected $sensor;
     protected $apikey;
+    protected $data;
 
-    public function __construct(User $user, Sensor $sensor, ApiKey $apikey)
+    public function __construct(User $user, Sensor $sensor, ApiKey $apikey, Data $data)
     {
         parent::__construct();
 
         $this->sensor   = $sensor;
         $this->user     = $user;
         $this->apikey   = $apikey;
+        $this->data     = $data;
 
         $this->beforeFilter('@checkValidSensor', ['only' => ['sensorUpload']]);
         $this->beforeFilter('@checkApiKey', ['only' => ['sensorInfo', 'locateSensors']]);
@@ -88,8 +90,18 @@ class ApiController extends BaseController
                 ->setCallback(Input::get('callback'));
     }
 
-    public function locateSensors($latitude = null, $longitude = null, $areasize = '2')
+    public function locateSensors($latitude = null, $longitude = null, $areasize = '2000')
     {
-        //
+        $sensors = $this->sensor->near($latitude, $longitude, $areasize);
+
+        $response = [];
+        foreach ($sensors as $sensor) {
+            $sensor->data = $this->data->where('sensor_id', '=', $sensor->id)->get();
+
+            $response[] = $sensor;
+        }
+
+        return Response::json($response)
+                ->setCallback(Input::get('callback'));
     }
 }

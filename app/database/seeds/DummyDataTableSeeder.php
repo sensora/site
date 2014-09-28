@@ -30,17 +30,19 @@ class DummyDataTableSeeder extends Seeder {
                     'longitude' =>  $faker->longitude,
                 ]);
 
-                foreach (range(0, 1000) as $data) {
-                    list($mintemp, $maxtemp) = array(mt_rand(0, 10), mt_rand(30, 50));
+                if ( $sensor->status ) {
+                    foreach (range(0, 1000) as $data) {
+                        list($mintemp, $maxtemp) = array(mt_rand(0, 10), mt_rand(30, 50));
 
-                    $data = Data::create([
-                        'sensor_id'     =>  $sensor->id,
-                        'temperature'   =>  $faker->numberBetween($mintemp, $maxtemp),
-                        'moisture'      =>  $faker->randomFloat(2, mt_rand(0, 100)),
-                        'pressure'      =>  $faker->randomFloat(2, 100000, 999999),
-                        'noise'         =>  null,
-                        'light'         =>  $faker->numberBetween(0, 1000),
-                    ]);
+                        $data = Data::create([
+                            'sensor_id'     =>  $sensor->id,
+                            'temperature'   =>  $faker->numberBetween($mintemp, $maxtemp),
+                            'moisture'      =>  $faker->randomFloat(2, mt_rand(0, 100)),
+                            'pressure'      =>  $faker->randomFloat(2, 100000, 999999),
+                            'noise'         =>  null,
+                            'light'         =>  $faker->numberBetween(0, 1000),
+                        ]);
+                    }
                 }
             }
 		}
