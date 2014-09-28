@@ -1,7 +1,7 @@
 <?php
 
 class PaypalPaymentController extends BaseController {
-
+   protected $paypalPayment;
     /**
      * object to authenticate the call.
      * @param object $_apiContext
@@ -22,8 +22,10 @@ class PaypalPaymentController extends BaseController {
      *   make sure to update you configuration there then grape the credentials using this code :
      *   $this->_cred= Paypalpayment::OAuthTokenCredential();
     */
-    public function __construct()
+    public function __construct(Payment $paypalPayment)
     {
+        parent::__construct();
+
         // ### Api Context
         // Pass in a `ApiContext` object to authenticate 
         // the call. You can also send a unique request id 
@@ -47,6 +49,8 @@ class PaypalPaymentController extends BaseController {
             'log.LogLevel' => 'FINE'
         ));
 
+        $this->paypalPayment = $paypalPayment;
+
     }
 
     /*
@@ -61,7 +65,7 @@ class PaypalPaymentController extends BaseController {
 
         $item = Paypalpayment::Item();
         $item->setName('API credits');
-        $item->setSKU('12345');
+        $item->setSKU($this->currentUser->id);
         $item->setQuantity('1');
         $item->setCurrency('MXN');
         $item->setPrice("10.00");
@@ -96,11 +100,6 @@ class PaypalPaymentController extends BaseController {
 
         //dump the repose data when create the payment
         $redirectUrl = $response->links[1]->href;
-
-        //this is will take you to complete your payment on paypal
-        //when you confirm your payment it will redirect you back to the rturned url set above
-        //inmycase sitename/payment/confirmpayment this will execute the getConfirmpayment function bellow
-        //the return url will content a PayerID var
         return Redirect::to( $redirectUrl );
     }
 
@@ -111,13 +110,10 @@ class PaypalPaymentController extends BaseController {
 
 
 
-    public function index()
+    public function getAll()
     {
-        echo "<pre>";
-
-        $payments = Paypalpayment::all(array('count' => 1, 'start_index' => 0),$this->_apiContext);
-
-        print_r($payments);
+       $payments = $this->currentUser->payments;
+       dd($payments->toArray());
     }
 
     /*
@@ -142,12 +138,28 @@ class PaypalPaymentController extends BaseController {
         $payment = Paypalpayment::get($payment_id, $this->_apiContext);
 
         $paymentExecution = Paypalpayment::PaymentExecution();
-
         $paymentExecution->setPayer_id( $payer_id );
 
         $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
-        $pago = $executePayment->toArray();
-        dd($pago['transactions'][0]['item_list']['items'][0]);
+        $resultArray = $executePayment->toArray();
+        $pay_id = $resultArray['id'];
+        
+        $this->paypalPayment->user_id = $this->currentUser->id;
+        $this->paypalPayment->payment_id = $pay_id;
+
+        if ( ! $this->paypalPayment->save() ) {
+            return Redirect::route('dashboard.sensors.add')
+                    ->withInput()
+                    ->withErrors( $this->paypalPayment->getErrors() );
+        }
+        $subjectString = 'Reciept for payment: ' + $pay_id;
+        Mail::send('emails.payment', array('pay_id' => $pay_id), function($message)
+        {
+            $message->to($this->currentUser->email, 'Dear Sensora user')->subject($subjectString);
+        });
+
+        return Redirect::route('dashboard.sensors.index')
+                ->withSuccess('Sensor added succesfully.');
 
         //check your response and whatever you want with the response
         //....
