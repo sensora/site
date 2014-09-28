@@ -26,8 +26,8 @@ class DummyDataTableSeeder extends Seeder {
                     'uuid'      =>  $faker->uuid,
                     'status'    =>  mt_rand(0, 10) > 5 ? true : false,
                     'elevation' =>  mt_rand(0, 1) == 1 ? '' : $faker->numberBetween(500, 2500),
-                    'latitude'  =>  $faker->latitude,
-                    'longitude' =>  $faker->longitude,
+                    'latitude'  =>  $faker->randomFloat(6, 15.274827, 48.683862),
+                    'longitude' =>  $faker->randomFloat(6, -73.163520, -125.340226),
                 ]);
 
                 if ( $sensor->status ) {
