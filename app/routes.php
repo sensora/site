@@ -64,7 +64,7 @@ Route::group(['before' => 'auth', 'prefix' => 'payment'], function() {
 	Route::get('/', ['uses' => 'PaypalPaymentController@create']);
 	Route::get('list', ['uses' => 'PaypalPaymentController@getAll']);
 	Route::get('confirmpayment', ['uses' => 'PaypalPaymentController@getConfirmpayment']);
-
+});
 /**
  * API
  */

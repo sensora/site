@@ -7,7 +7,7 @@
 		<h2>Payment done!</h2>
 
 		<div>
-			Your payment [with id: {{pay_id}}] is complete! Thanks for supporting Sensora. &lt;3
+			Your payment [with id: {{ $pay_id }}] is complete! Thanks for supporting Sensora. &lt;3
 		</div>
 	</body>
 </html>
