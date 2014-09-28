@@ -3,6 +3,7 @@
 @section('title', 'Register')
 
 @section('content')
+<div class="row">
 	<div class="registroBox">
 		<h1>Register</h1>
 
@@ -38,6 +39,7 @@
 					{{ Form::submit('Submit', ['class' => 'button small']) }}
 				</div>
 			</div>
-		</div>
-	{{ Form::close() }}
+		{{ Form::close() }}
+	</div>
+</div>
 @stop

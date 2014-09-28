@@ -13,7 +13,6 @@
                     <th>Identifier/Label</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
-                    <th>Altitude</th>
                     <th>Status</th>
                     <th>Controls</th>
                 </tr>
@@ -32,7 +31,6 @@
                     <td>{{ $sensor->name }}</td>
                     <td>{{{ $sensor->latitude }}}</td>
                     <td>{{{ $sensor->longitude }}}</td>
-                    <td>{{{ $sensor->altitude or 'N/A' }}}</td>
                     <td>{{ $sensor->status ? '<span class="label success">Active</span>' : '<span class="label alert">Inactive</span>' }}</td>
                     <td>
                         <a href="#" class="openMapModal" data-latitude="{{{ $sensor->latitude }}}" data-longitude="{{{ $sensor->longitude }}}"><i class="fa fa-globe"></i></a>
