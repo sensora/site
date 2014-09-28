@@ -35,6 +35,8 @@ Route::group(['before' => 'auth', 'prefix' => 'dashboard'], function() {
 		Route::post('add', ['uses' => 'DashboardSensorsController@postAdd', 'before' => 'csrf']);
 
 		Route::get('{id}/edit', ['as' => 'dashboard.sensors.edit', 'uses' => 'DashboardSensorsController@getEdit']);
+		Route::post('{id}/edit', ['uses' => 'DashboardSensorsController@postEdit', 'before' => 'csrf']);
+
 		Route::get('{id}/delete', ['as' => 'dashboard.sensors.delete', 'uses' => 'DashboardSensorsController@getDelete']);
 	});
 });
