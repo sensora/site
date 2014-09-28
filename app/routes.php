@@ -3,6 +3,7 @@
  * Route patterns
  */
 Route::pattern('id', '[0-9]+');
+// Route::pattern('uuid', '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}');
 
 /**
  * Generic
@@ -57,6 +58,14 @@ Route::group(['before' => 'auth', 'prefix' => 'profile'], function() {
 /**
  * API
  */
-Route::group(['prefix' => 'api/v1'], function() {
-	Route::get('/', ['uses' => 'ApiController@index']);
+Route::group(['prefix' => 'api'], function() {
+	Route::get('locate/{latitude}/{longitude}/{areasize?}', ['as' => 'api.locate', 'uses' => 'ApiController@locateSensors']);
+
+	Route::group(['prefix' => 'sensor'], function() {
+		Route::post('/', ['as' => 'api.sensor.upload', 'uses' => 'ApiController@sensorUpload']);
+
+		Route::get('{uuid}', ['as' => 'api.sensor.upload', 'uses' => 'ApiController@sensorInfo']);
+
+		Route::get('{uuid}/{from}/{to}', ['as' => 'api.sensor.info', 'uses' => 'ApiController@locateSensors']);
+	});
 });
