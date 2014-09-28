@@ -72,6 +72,18 @@ class DashboardSensorsController extends BaseController
 
     public function getDelete($id)
     {
-        //
+        $this->sensor = $this->sensor->find($id);
+
+        if ( $this->sensor->user->id != $this->currentUser->id ) {
+            return Redirect::route('dashboard.sensors.index');
+        }
+
+        if ( $this->sensor->delete() ) {
+            return Redirect::route('dashboard.sensors.index')
+                    ->withErrors('There was an error deleting the sensor. Please try again.');
+        }
+
+        return Redirect::route('dashboard.sensors.index')
+                ->withSuccess('Sensor deleted succesfully.');
     }
 }
