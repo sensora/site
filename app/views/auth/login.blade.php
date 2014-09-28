@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Entrar')
+@section('title', 'Login')
 
 @section('content')
 	{{ Form::open(['route' => 'auth.login']) }}
@@ -13,14 +13,14 @@
 		</div>
 		<div class="row">
 			<div class="large-12 columns">
-				<label for="password">Contraseña
+				<label for="password">Password
 					{{ Form::password('password') }}
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="large-1 columns">
-				{{ Form::submit('Enviar', ['class' => 'button small']) }}
+				{{ Form::submit('Submit', ['class' => 'button small']) }}
 			</div>
 		</div>
 	{{ Form::close() }}

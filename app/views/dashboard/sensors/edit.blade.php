@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title', 'New Sensor')
+@section('title', 'Edit Sensor')
 
 @section('content')
-    <h1>New Sensor</h1>
+    <h1>Edit Sensor</h1>
 
-    {{ Form::open(['route' => 'dashboard.sensors.add']) }}
+    {{ Form::model($sensor, ['route' => ['dashboard.sensors.edit', $sensor->id]]) }}
         <div class="row">
             <div class="large-12 columns">
                 <label for="latitude">Label
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="large-12 columns">
-                {{ Form::submit('Add', ['class' => 'button']) }}
+                {{ Form::submit('Edit', ['class' => 'button']) }}
             </div>
         </div>
     {{ Form::close() }}

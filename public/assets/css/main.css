@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
 html, body {
   padding:0px;
@@ -5,9 +6,8 @@ html, body {
   width:100%;
   min-height: 100%;
   background-color:#000;
-  font-family:"Lucida Grande", Arial, Helvetica, sans-serif;
+  font: 100 15px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fff;
-  font-size: 15px;
 }
 
 form, p, h1, h2, h3, h4 { margin:0; padding:0; }
@@ -16,25 +16,26 @@ form, p, h1, h2, h3, h4 { margin:0; padding:0; }
 a img, table { border:none; }
 .nobr { white-space:nowrap; }
 .hiddenInfo { display:none!important; visibility:hidden; position:absolute; }
-a { color:#8a8a8a; text-decoration:none; font-family:  'Roboto', sans-serif; font-weight:100; }
+a { color:#8a8a8a; text-decoration:none; }
 a:hover, a.actual { color:#383838; }
-textarea, .entrada { resize:none; font-family:"Lucida Grande", Arial, Helvetica, sans-serif; font-size:15px; }
-* { outline:none; font-weight:normal; cursor:default; }
+textarea, .entrada { resize:none; font: 100 36px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px; }
+* { outline:none; font-weight:100; cursor:default; }
 a, a img { cursor:pointer; }
 
 header, section, footer, aside, nav, article, figure { display: block; }
 
+.top-bar { background-color: transparent; position: fixed; width: 100%; z-index: 30; }
+.navegacionActiva { background-color: #333; }
 
-
-.top-bar { z-index: 40; position: fixed; top:0; width: 100%; left: 0; background-color: transparent;
+.logo { display:block; width: 138px; height: 50px; background-image: url('../img/misc/sensoraName2.png'); 
 	-moz-transition:all ease .6s;
 	-webkit-transition:all ease .6s;
 	-ms-transition:all ease .6s;
 	-o-transition:all ease .6s;
 	transition:all ease .6s;
- }
+}
 
-.navegacionActiva { background-color: #333; }
+.navegacionActiva .logo { background-image: url('../img/misc/sensoraName.png'); }
 
 .video01 { position: fixed; top:0; bottom: 0; left: 0; right: 0; padding-top: 100px; }
 
@@ -42,13 +43,16 @@ header, section, footer, aside, nav, article, figure { display: block; }
 #mainContent { position: relative; z-index: 3;  }
 
 #intro .interior { position: relative; height: 100%; text-align: center; position: relative; }
-#intro .interior img { position: absolute; left: 50%; top: 50%; margin-top: -135px; margin-left: -195px; }
-
-.textoIntro { background-color: #999; color: #000; }
+#intro .interior img { position: absolute; right:30px; bottom:30px; }
 
 
+.welcomeBox { background-color: rgba(255,187,0,0.8); color: #ffffff; position: absolute; left: 0; top: 50%; margin-top: -100px; width: 520px; padding: 20px 40px; font: 100 36px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; text-align: left; }
 
 
+.textoIntro { background-color: #fff; color: #000; padding-top: 90px; }
+.textoIntro h2 { text-align: center; padding-bottom: 80px; }
+
+.sticky { background: none; position: relative; z-index: 30;}
 
 
 
@@ -63,8 +67,4 @@ header, section, footer, aside, nav, article, figure { display: block; }
 
 .opaque {
     opacity: .5;
-}
-
-.small-text-left {
-    font-size: .4em;
 }
