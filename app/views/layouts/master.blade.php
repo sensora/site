@@ -29,15 +29,29 @@
     <div class="row">
         @include('partials.messages')
     </div>
-    <div class="row">
-        @yield('content')
-    </div>
+
+    @yield('content')
 
     <script src="{{ asset('assets/js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/foundation.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     @if ( Request::is('dashboard/sensors*'))
     <script src="{{ asset('assets/js/map.js') }}"></script>
+    @endif
+    @if ( Request::is('/') )
+    <script src="{{ asset('assets/js/jquery.videoBG.js') }}"></script>
+    <script>
+    $(document).ready(function() {
+        $('.video01').videoBG({
+            mp4:'{{ asset('assets/videos/tomasMexicoFin.mp4') }}',
+            webm:'{{ asset('assets/videos/tomasMexicoFin.webm') }}',
+            poster: '{{ asset('assets/videos/tomasMexicoFin.jpg') }}',
+            scale:true,
+            loop: true,
+            zIndex: 1
+        });
+    });
+    </script>
     @endif
 </body>
 </html>

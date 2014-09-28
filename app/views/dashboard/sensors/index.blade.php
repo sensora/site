@@ -3,6 +3,7 @@
 @section('title', 'Sensores')
 
 @section('content')
+<div class="row">
     <h1>Sensors <small><a href="{{ route('dashboard.sensors.add') }}">Add <i class="fa fa-plus"></i></a></small></h1>
 
     <table class="large-12 columns" role="grid">
@@ -46,4 +47,5 @@
         <div id="sensor_map"></div>
         <a class="close-reveal-modal">&#215;</a>
     </div>
+</div>
 @stop
