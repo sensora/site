@@ -60,9 +60,9 @@ class ApiController extends BaseController
             ))->setCallback(Input::get('callback'));
         }
 
-        if ( $key->user->apicalls <= 0 ) {
-            // TODO:
-        }
+        // if ( $key->user->apicalls <= 0 ) {
+        //     // TODO:
+        // }
     }
 
     public function sensorUpload()
@@ -79,18 +79,12 @@ class ApiController extends BaseController
 
     public function sensorInfo($uuid = null)
     {
-        try {
-            $sensor = $this->sensor->where('uuid', '=', $uuid)->firstOrFail();
-        }catch(ModelNotFoundException $e) {
-            return Response::json(array(
-                'success'   =>  false,
-                'error'     =>  array(
-                    'message'   =>  'Sensor not found.'
-                ),
-            ))->setCallback(Input::get('callback'));
-        }
+        $uuids = explode(',', $uuid);
+        $uuids = array_map('trim', $uuids);
 
-        return Response::json($sensor->toArray())
+        $sensors = $this->sensor->whereIn('uuid', $uuids)->get();
+
+        return Response::json($sensors->toArray())
                 ->setCallback(Input::get('callback'));
     }
 
