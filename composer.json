@@ -12,6 +12,7 @@
 	"require-dev": {
         "way/generators": "~2.0",
 		"itsgoingd/clockwork": "1.*",
+		"anouar/paypalpayment": "dev-master",
 		"fzaninotto/faker": "1.4.0"
 	},
 	"autoload": {
