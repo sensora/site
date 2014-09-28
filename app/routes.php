@@ -58,3 +58,10 @@ Route::group(['before' => 'auth', 'prefix' => 'profile'], function() {
 Route::group(['prefix' => 'api/v1'], function() {
 	Route::get('/', ['uses' => 'ApiController@index']);
 });
+
+
+/***
+* Payments
+*/
+Route::get('payment/create', ['uses' => 'PaypalPaymentController@create']);
+Route::get('payment/confirmpayment', ['uses' => 'PaypalPaymentController@getConfirmpayment']);
