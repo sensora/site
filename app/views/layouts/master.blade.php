@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Home') :: Sensora</title>
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,200,100">
     <link rel="stylesheet" href="{{ asset('assets/css/normalize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/foundation.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
@@ -21,7 +22,7 @@
     <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 
     @if ( Request::is('dashboard/sensors*'))
-    <script src="http://maps.googleapis.com/maps/api/js?key={{ getenv('GOOGLE_MAPS_APIKEY') }}&sensor=true"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key={{ getenv('GOOGLE_MAPS_APIKEY') }}&sensor=true"></script>
     @endif
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

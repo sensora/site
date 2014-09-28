@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,200,100);
-
 html, body {
   padding:0px;
   margin:0px;
@@ -29,7 +27,7 @@ h1, h2, h3, h4 { font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-ser
 .top-bar { background-color: transparent; position: fixed; width: 100%; z-index: 30; }
 .navegacionActiva { background-color: #1F2022; }
 
-.logo { display:block; width: 138px; height: 50px; background-image: url('../img/misc/sensoraName2.png'); 
+.logo { display:block; width: 138px; height: 50px; background-image: url('../img/misc/sensoraName2.png');
 	-moz-transition:all ease .6s;
 	-webkit-transition:all ease .6s;
 	-ms-transition:all ease .6s;
