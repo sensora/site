@@ -50,7 +50,7 @@
                 </div>
                 @endif
                 <div class="large-12 columns">
-                    <a href="/payment" class="button button-primary">Add API Credits</a>
+                    <a href="/payment" class="button button-primary">Add 10k request for $10MXN</a>
                 </div>
             </div>
         </div>
