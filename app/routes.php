@@ -60,10 +60,11 @@ Route::group(['before' => 'auth', 'prefix' => 'profile'], function() {
 /***
 * Payments
 */
-Route::group(['before' => 'auth', 'prefix' => 'payment'], function() {
-	Route::get('/', ['uses' => 'PaypalPaymentController@create']);
-	Route::get('list', ['uses' => 'PaypalPaymentController@getAll']);
-	Route::get('confirmpayment', ['uses' => 'PaypalPaymentController@getConfirmpayment']);
+Route::group(['before' => 'auth', 'prefix' => 'payments'], function() {
+	Route::get('/', [ 'as' =>'payments.index', 'uses' => 'PaypalPaymentController@index']);
+	Route::get('create', ['uses' => 'PaypalPaymentController@create']);
+	Route::get('confirmpayment', ['as' =>'payments.confirmation', 'uses' => 'PaypalPaymentController@getConfirmpayment']);
+	Route::get('cancelpayment', ['as' =>'payments.cancel', 'uses' => 'PaypalPaymentController@getCancelpayment']);
 });
 /**
  * API

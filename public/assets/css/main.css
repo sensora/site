@@ -67,3 +67,15 @@ header, section, footer, aside, nav, article, figure { display: block; }
 .opaque {
     opacity: .5;
 }
+
+
+/*Payments*/
+.paymentList{
+  margin-top: 4em;
+}
+.thanksCallout{
+  color: white;
+}
+.errorMessage{
+  margin-top: 5em !important;
+}

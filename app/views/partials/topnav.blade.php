@@ -15,6 +15,9 @@
                         <li><a href="{{ route('dashboard.sensors.add') }}"><i class="fa fa-plus"></i> Nuevo</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="/payments">Credits</a>
+                </li>
             </ul>
             @endif
 

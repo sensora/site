@@ -1,0 +1,1 @@
+/home/vagrant/Code/sensora/site/app/views/payments/cancel.blade.php
