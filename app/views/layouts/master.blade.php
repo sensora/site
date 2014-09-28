@@ -24,16 +24,6 @@
     @if ( Request::is('dashboard/sensors*'))
     <script src="//maps.googleapis.com/maps/api/js?key={{ getenv('GOOGLE_MAPS_APIKEY') }}&sensor=true"></script>
     @endif
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-55145581-1', 'auto');
-    ga('send', 'pageview');
-
-    </script>
 
     <meta name="description" content="A sensor collects enviromental data, such as temperature, atmospheric pressure, humity, light and noise intensity, altitude, plus others. These sensors send the data to the Open API so other users be able to consult it." />
         <!-- Google Authorship and Publisher Markup -->
@@ -100,5 +90,16 @@
     });
     </script>
     @endif
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-55145581-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
 </body>
 </html>
