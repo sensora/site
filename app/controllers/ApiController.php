@@ -98,7 +98,7 @@ class ApiController extends BaseController
                 ->setCallback(Input::get('callback'));
     }
 
-    public function locateSensors($latitude = null, $longitude = null, $areasize = '150')
+    public function locateSensors($latitude = null, $longitude = null, $areasize = '5')
     {
         $sensors = $this->sensor->near($latitude, $longitude, $areasize);
 

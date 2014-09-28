@@ -51,7 +51,7 @@ class Sensor extends Eloquent
                         FROM sensors s
                         JOIN (
                             SELECT  $latitude  AS latpoint,  $longitude AS longpoint,
-                                    $area AS radius,      111.045 AS distance_unit
+                                    50.0 AS radius,      111.045 AS distance_unit
                         ) AS p
                         WHERE s.latitude
                                 BETWEEN p.latpoint  - (p.radius / p.distance_unit)
@@ -60,6 +60,7 @@ class Sensor extends Eloquent
                             BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
                                 AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
                         AND s.status = 1
+                        having distance < $area
                         ORDER BY distance
                         LIMIT 15");
     }
