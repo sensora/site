@@ -38,4 +38,14 @@ class DashboardSensorsController extends BaseController
         return Redirect::route('dashboard.sensors.index')
                 ->withSuccess('Sensor agregado.');
     }
+
+    public function getEdit($id)
+    {
+        //
+    }
+
+    public function getDelete($id)
+    {
+        //
+    }
 }

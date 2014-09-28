@@ -1,6 +1,10 @@
 <?php
+use Watson\Validating\ValidatingTrait;
+
 class Sensor extends Eloquent
 {
+    use ValidatingTrait;
+
     protected $table = 'sensors';
 
     protected $fillable = ['label', 'latitude', 'longitude'];

@@ -20,7 +20,12 @@
 
         <ul class="right">
             @if ( Auth::check() )
-            <li><a href="{{ route('auth.logout') }}">Salir</a></li>
+            <li class="has-dropdown">
+                <a href="{{ route('profile.index') }}">Cuenta</a>
+                <ul class="dropdown">
+                    <li><a href="{{ route('auth.logout') }}">Salir</a></li>
+                </ul>
+            </li>
             @else
             <li><a href="{{ route('auth.register') }}">Registro</a></li>
             <li><a href="{{ route('auth.login') }}">Entrar</a></li>

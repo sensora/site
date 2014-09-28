@@ -12,6 +12,7 @@
                 <th>Latitude</th>
                 <th>longitud</th>
                 <th>Altitud</th>
+                <th>Estado</th>
                 <th>Controles</th>
             </tr>
         </thead>
@@ -23,9 +24,10 @@
                 <td>{{ $sensor->latitude }}</td>
                 <td>{{ $sensor->longitude }}</td>
                 <td>{{ $sensor->altitude or 'N/A' }}</td>
+                <td>{{ $sensor->status ? 'Activo' : 'Inactivo' }}</td>
                 <td>
-                    <a href=""><i class="fa fa-pencil-square-o"></i></a>
-                    <a href=""><i class="fa fa-times"></i></a>
+                    <a href="{{ route('dashboard.sensors.edit', $sensor->id) }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a class="confirm" href="{{ route('dashboard.sensors.delete', $sensor->id) }}"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
             @endforeach

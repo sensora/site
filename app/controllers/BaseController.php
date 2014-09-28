@@ -19,6 +19,7 @@ class BaseController extends Controller
         }
 
         $this->currentUser = Auth::user();
+        View::share('currentUser', $this->currentUser);
     }
 
     /**
