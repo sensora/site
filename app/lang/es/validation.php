@@ -116,8 +116,10 @@ return array(
 	*/
 
 	'attributes' => array(
-	    'name' => 'Nombre',
-	    'password' => 'Contraseña',
-	    'email' =>'Email',
+	    'name' 		=> 'Nombre',
+	    'password' 	=> 'Contraseña',
+	    'email' 	=>'Email',
+	    'latitude'	=>	'Latitud',
+	    'longitude'	=>	'Longitud',
 	),
 );

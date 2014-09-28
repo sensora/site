@@ -1,23 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Bienvenidos')
+@section('title', 'Welcome')
 
 @section('content')
-
-
-
-
-
 <section class="video01 video"></section>
 <div id="mainContent">
-
 	<div id="intro">
 		<div class="interior">
-			<img src="assets/img/misc/sensoraSimbolo.png" />
-
 			<div class="welcomeBox">
 				Open data sensor grid network feeded by sensors scatered around the city.
 			</div>
+			<img src="{{ asset('assets/img/misc/sensoraSimbolo.png') }}" />
 		</div>
 	</div>
 
@@ -41,8 +34,5 @@
 			</div>
 		</div>
 	</div>
-
 </div>
-
-
 @stop

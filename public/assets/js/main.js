@@ -1,6 +1,3 @@
-
-
-
 var anchoPagina;
 var altoPagina;
 
@@ -8,11 +5,11 @@ function adjustStyle(width,height) {
     width = parseInt(width);
     height = parseInt(height);
     if (width < 700 || height < 450 ) {
-        
-    } 
+
+    }
 
     else {
-    
+
     }
 }
 
@@ -30,7 +27,7 @@ function elementoFull(){
 }
 
 $(function() {
-    $(window).resize(function() { 
+    $(window).resize(function() {
         cambioTamano();
         elementoFull();
 
@@ -38,9 +35,12 @@ $(function() {
     });
 });
 
+$(document).foundation();
+
 $(document).ready(function() {
 	cambioTamano();
 	elementoFull();
+
 	$('.confirm').click(function(e) {
         if ( ! confirm('¿Estás seguro de realizar esta acción?') ) {
             e.preventDefault();
