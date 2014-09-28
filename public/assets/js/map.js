@@ -97,6 +97,7 @@
                     map: listMap,
                     draggable: true
                 });
+                listMap.setCenter(new google.maps.LatLng(listLatitude, listLongitude));
         });
 
         $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
