@@ -41,18 +41,19 @@
                                 </div>
                             {{ Form::close() }}
                         </div>
-                    @else
-                    <div class="row">
-                        <div class="large-12 columns">
-                            {{ Form::open(['route' => 'profile.api.generate']) }}
-                                <p>You don't have any key yet. {{ Form::submit('Generate', ['class' => 'button tiny round']) }}</p>
-                            {{ Form::close() }}
-                        </div>
-                    </div>
-                    @endif
+
+                @else
+                <div class="row">
                     <div class="large-12 columns">
-                        <a href="/payment" class="button button-primary">Add API Credits</a>
+                        {{ Form::open(['route' => 'profile.api.generate']) }}
+                            <p>You don't have any key yet. {{ Form::submit('Generate', ['class' => 'button tiny round']) }}</p>
+                        {{ Form::close() }}
                     </div>
+                </div>
+                @endif
+                <div class="large-12 columns">
+                    <a href="/payments/create" class="button button-primary">Add 10k request for $10MXN</a>
+
                 </div>
             </div>
         </div>

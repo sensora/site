@@ -17,7 +17,7 @@ class PaypalPaymentController extends BaseController
         );
 
         $this->_apiContext->setConfig(array(
-            'mode' => 'sandbox',
+            'mode' => 'live',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
             'log.FileName' => __DIR__.'/../PayPal.log',
@@ -51,8 +51,8 @@ class PaypalPaymentController extends BaseController
         $transaction->setAmount($amount);
         $transaction->setDescription("Credits for sensora.net API");
         $redirectUrls = Paypalpayment:: RedirectUrls();
-        $redirectUrls->setReturn_url( url('payment/confirmpayment') );
-        $redirectUrls->setCancel_url( url('payment/cancelpayment') );
+        $redirectUrls->setReturn_url( url('payments/confirmpayment') );
+        $redirectUrls->setCancel_url( url('payments/cancelpayment') );
 
         $payment = Paypalpayment:: Payment();
         $payment->setIntent("sale");
@@ -78,10 +78,10 @@ class PaypalPaymentController extends BaseController
 
 
 
-    public function getAll()
+    public function index()
     {
-       $payments = $this->currentUser->payments;
-       dd($payments->toArray());
+        $payments = $this->currentUser->payments()->paginate(15);
+        return View::make('payments.index', compact('payments'));
     }
 
     /*
@@ -116,7 +116,7 @@ class PaypalPaymentController extends BaseController
         $this->paypalPayment->payment_id = $pay_id;
 
         if ( ! $this->paypalPayment->save() ) {
-            return Redirect::route('dashboard.sensors.add')
+            return Redirect::route('payments.index')
                     ->withInput()
                     ->withErrors( $this->paypalPayment->getErrors() );
         }
@@ -125,14 +125,14 @@ class PaypalPaymentController extends BaseController
             $message->to($this->currentUser->email, $this->currentUser->name)->subject('Payment reciept from Sensora');
         });
 
-        return Redirect::route('dashboard.sensors.index')
-                ->withSuccess('Sensor added succesfully.');
+        return Redirect::route('payments.index')
+                ->withSuccess('Thanks for your support. You are making the world a better place :D');
 
-        //check your response and whatever you want with the response
-        //....
     }
     public function getCancelpayment()
     {
-        return 'Display the view that you want to show if  user cancel';
+         return Redirect::route('payments.index')
+                    ->withInput()
+                    ->withErrors('Order cancelled. Do not worry we are still cool :)');
     }
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row errorMessage">
     @if( $errors->has() )
     <div data-alert class="alert-box alert" tabindex="0" aria-live="assertive" role="dialogalert">
         <ul>

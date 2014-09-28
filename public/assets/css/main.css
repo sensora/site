@@ -69,3 +69,15 @@ h1, h2, h3, h4 { font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-ser
 .opaque {
     opacity: .5;
 }
+
+
+/*Payments*/
+.paymentList{
+  margin-top: 4em;
+}
+.thanksCallout{
+  color: white;
+}
+.errorMessage{
+  margin-top: 5em !important;
+}
