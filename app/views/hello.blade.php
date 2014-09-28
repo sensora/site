@@ -135,7 +135,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	var home=true;
-</script>
 @stop

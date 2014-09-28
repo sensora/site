@@ -39,8 +39,5 @@
 				</div>
 			</div>
 		</div>
-<script>
-	var home=false;
-</script>
 	{{ Form::close() }}
 @stop

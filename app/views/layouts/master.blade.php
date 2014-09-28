@@ -61,6 +61,15 @@
             loop: true,
             zIndex: 1
         });
+        home=true;
+
+        $(window).scroll(function(e) {
+            var scroll_position     = $(window).scrollTop();
+            var centroPantalla      = scroll_position + altoPagina;
+
+            if(scroll_position >= (altoPagina/2)-150){ $(".top-bar").addClass('navegacionActiva'); }
+            else { $(".top-bar").removeClass('navegacionActiva'); }
+        });
     });
     </script>
     @endif
