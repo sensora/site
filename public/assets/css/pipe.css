@@ -51,6 +51,7 @@
   .video01 .videoBG {
     display: none;
   }
+  .video01 { background-image: url('../videos/tomasMexicoFin.jpg'); background-position: center; background-size: auto 100%; }
   #intro .welcomeBox { width: 100%; }
-  #intro .welcomeBox img { display: none;}
+  #intro .interior img { display: none;}
 }
