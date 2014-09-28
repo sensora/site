@@ -55,9 +55,7 @@ Route::group(['before' => 'auth', 'prefix' => 'profile'], function() {
 	Route::post('api/revoke', ['as' => 'profile.api.revoke', 'uses' => 'ProfileController@revokeApiKey', 'before' => 'csrf']);
 });
 
-
-
-/***
+/**
 * Payments
 */
 Route::group(['before' => 'auth', 'prefix' => 'payments'], function() {
@@ -66,10 +64,10 @@ Route::group(['before' => 'auth', 'prefix' => 'payments'], function() {
 	Route::get('confirmpayment', ['as' =>'payments.confirmation', 'uses' => 'PaypalPaymentController@getConfirmpayment']);
 	Route::get('cancelpayment', ['as' =>'payments.cancel', 'uses' => 'PaypalPaymentController@getCancelpayment']);
 });
+
 /**
  * API
  */
-
 Route::group(['prefix' => 'api'], function() {
 	Route::get('locate/{latitude}/{longitude}/{areasize?}', ['as' => 'api.locate', 'uses' => 'ApiController@locateSensors']);
 

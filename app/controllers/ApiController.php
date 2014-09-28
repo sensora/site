@@ -69,6 +69,8 @@ class ApiController extends BaseController
 
     public function sensorUpload()
     {
+        $sensorId   = Input::get('sensor_id');
+
         try {
             $sensor = $this->sensor->where('uuid', '=', $sensorId)->firstOrFail();
         }catch(ModelNotFoundException $e) {
@@ -80,30 +82,26 @@ class ApiController extends BaseController
             ))->setCallback(Input::get('callback'));
         }
 
-        $temperature    =   Input::get('temperature');
-        $moisture       =   Input::get('moisture');
-        $altitude       =   Input::get('altitude');
-        $pressure       =   Input::get('pressure');
-        $sound          =   Input::get('noise');
-        $light          =   Input::get('light');
+        $rawPostData = file_get_contents("php://input");
 
-        $created_at     =   Input::get('created_at');
+        $data = json_decode($rawPostData);
 
-        $dataRaw = [
-            'sensor_id'     =>  $sensor->id,
-            'temperature'   =>  $temperature,
-            'moisture'      =>  $moisture,
-            'altitude'      =>  $altitude,
-            'pressure'      =>  $pressure,
-            'noise'         =>  $sound,
-            'light'         =>  $light,
-        ];
+        foreach ($data->data as $row) {
+            $dataRaw = [
+                'sensor_id'     =>  $sensor->id,
+                'temperature'   =>  isset($row->temperature) ? $row->temperature : null,
+                'moisture'      =>  isset($row->moisture) ? $row->moisture : null,
+                'pressure'      =>  isset($row->pressure) ? $row->pressure : null,
+                'noise'         =>  isset($row->noise) ? $row->noise : null,
+                'light'         =>  isset($row->light) ? $row->light : null,
+            ];
 
-        if ( $created_at ) {
-            $dataRaw['created_at'] =    $created_at;
+            if ( isset($row->created_at) ) {
+                $dataRaw['created_at'] =    $row->created_at;
+            }
+
+            $this->data->create($dataRaw);
         }
-
-        $this->data->create($dataRaw);
 
         return Response::json([
             'success'   =>  true,
