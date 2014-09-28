@@ -12,7 +12,7 @@
             <li class="has-dropdown">
                 <a href="{{ route('dashboard.sensors.index') }}">Sensores</a>
                 <ul class="dropdown">
-                    <li><a href="{{ route('dashboard.sensors.add') }}">Nuevo</a></li>
+                    <li><a href="{{ route('dashboard.sensors.add') }}"><i class="fa fa-plus"></i> Nuevo</a></li>
                 </ul>
             </li>
         </ul>
@@ -20,7 +20,12 @@
 
         <ul class="right">
             @if ( Auth::check() )
-            <li><a href="{{ route('auth.logout') }}">Salir</a></li>
+            <li class="has-dropdown">
+                <a href="{{ route('profile.index') }}">Cuenta</a>
+                <ul class="dropdown">
+                    <li><a href="{{ route('auth.logout') }}">Salir</a></li>
+                </ul>
+            </li>
             @else
             <li><a href="{{ route('auth.register') }}">Registro</a></li>
             <li><a href="{{ route('auth.login') }}">Entrar</a></li>

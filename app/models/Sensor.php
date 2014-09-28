@@ -1,10 +1,26 @@
 <?php
+use Watson\Validating\ValidatingTrait;
+
 class Sensor extends Eloquent
 {
+    use ValidatingTrait;
+
     protected $table = 'sensors';
 
-    public user()
+    protected $fillable = ['label', 'latitude', 'longitude'];
+
+    protected $rules = [
+        'latitude'  => 'required',
+        'longitude' => 'required',
+    ];
+
+    public function user()
     {
-        $this->belongsTo('User');
+        return $this->belongsTo('User');
+    }
+
+    public function getNameAttribute()
+    {
+        return empty($this->label) ? $this->uuid : sprintf('%s <span class="opaque">( %s )</span>', $this->label, $this->uuid);
     }
 }

@@ -1,3 +1,4 @@
+
 html, body {
   padding:0px;
   margin:0px;
@@ -51,3 +52,19 @@ header, section, footer, aside, nav, article, figure { display: block; }
 
 
 
+#sensor_map {
+    height: 300px;
+}
+
+#getLocation {
+    margin-top: 22px;
+    display: block;
+}
+
+.opaque {
+    opacity: .5;
+}
+
+.small-text-left {
+    font-size: .4em;
+}

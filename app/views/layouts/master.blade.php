@@ -9,7 +9,8 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -17,9 +18,14 @@
     <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/vendor/modernizr.js"></script>
+
+    @if ( Request::is('dashboard/sensors/add'))
+    <script src="http://maps.googleapis.com/maps/api/js?key={{ getenv('GOOGLE_MAPS_APIKEY') }}&sensor=true"></script>
+    @endif
 </head>
 <body>
     @include('partials.topnav')
+
 
     
     
@@ -33,8 +39,8 @@
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
-    <script src="assets/js/main.js"></script>
 
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/jquery.videoBG.js"></script>
 <script>
 $(document).ready(function() {
@@ -48,5 +54,9 @@ $(document).ready(function() {
     });
 });
 </script>
+
+    @if ( Request::is('dashboard/sensors/add'))
+    <script src="{{ asset('assets/js/map.js') }}"></script>
+    @endif
 </body>
 </html>
