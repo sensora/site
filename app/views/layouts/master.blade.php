@@ -37,9 +37,11 @@
 <body>
     @include('partials.topnav')
 
+    @if ( ! Request::is('/') )
     <div class="row">
         @include('partials.messages')
     </div>
+    @endif
 
     @yield('content')
 
