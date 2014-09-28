@@ -3,8 +3,10 @@
 @section('title', 'Login')
 
 @section('content')
+<div class="row">
 	{{ Form::open(['route' => 'auth.login']) }}
 		<div class="loginBox">
+			<h1>Login</h1>
 			<div class="row">
 				<div class="large-12 columns">
 					<label for="email">Email:
@@ -26,4 +28,5 @@
 			</div>
 		</div>
 	{{ Form::close() }}
+</div>
 @stop
