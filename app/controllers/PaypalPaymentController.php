@@ -153,7 +153,7 @@ class PaypalPaymentController extends BaseController {
                     ->withErrors( $this->paypalPayment->getErrors() );
         }
         $subjectString = 'Reciept for payment: ' + $pay_id;
-        Mail::send('emails.payment', array('pay_id' => $pay_id), function($message)
+        Mail::send('emails.payment', array('pay_id' => $pay_id), function($message) use($subjectString)
         {
             $message->to($this->currentUser->email, 'Dear Sensora user')->subject($subjectString);
         });

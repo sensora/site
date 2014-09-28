@@ -2,10 +2,23 @@
 /*font: 100 15px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;*/
 
 
+.explicacion img { display: block; margin: auto; }
+.explicacion h2 { font-weight: 100; }
+.explicacion p { font-weight: 100; padding-bottom: 10px; }
+.explicacion h3 { /*padding-top: 60px;*/ }
+.textoQueEs { background-color: #fff; color: #999; padding: 90px 0; }
+.textoQueEs h2 { text-align: center; color: #000; padding-bottom: 80px; }
 
 
+.textoParaQue { background-color: #31373a; color: #969ba2; padding: 90px 0; }
+.textoParaQue h2 { text-align: center; color: #fff; padding-bottom: 80px; }
 
 
+.textoEjemplos { background-color: #fff; color: #999; padding: 90px 0; }
+.textoEjemplos h2 { text-align: center; color: #000; padding-bottom: 80px; }
+.textoEjemplos .row .row { padding-bottom: 110px; }
 
+.creditos { background-color: #000; color: #999; padding: 40px 0; }
+.creditos h2 { text-align: center; color: #fff; padding-bottom: 30px; }
 
 

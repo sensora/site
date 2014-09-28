@@ -9,6 +9,8 @@ class Sensor extends Eloquent
 
     protected $fillable = ['label', 'latitude', 'longitude'];
 
+    protected $hidden = ['user_id', 'id', 'label'];
+
     protected $rules = [
         'latitude'  => 'required',
         'longitude' => 'required',
@@ -19,8 +21,18 @@ class Sensor extends Eloquent
         return $this->belongsTo('User');
     }
 
+    public function data()
+    {
+        return $this->hasMany('Data');
+    }
+
     public function getNameAttribute()
     {
         return empty($this->label) ? $this->uuid : sprintf('%s <span class="opaque">( %s )</span>', e($this->label), $this->uuid);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', '=', true);
     }
 }
