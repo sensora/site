@@ -19,17 +19,34 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/vendor/modernizr.js"></script>
 </head>
 <body>
-    @include('partials.topnav');
+    @include('partials.topnav')
+
+    
+    
+
+    @yield('content')
+
 
     <div class="row">
         @include('partials.messages')
-    </div>
-    <div class="row">
-        @yield('content')
     </div>
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/jquery.videoBG.js"></script>
+<script>
+$(document).ready(function() {
+    $('.video01').videoBG({
+        mp4:'assets/videos/tomasMexicoFin.mp4',
+        webm:'assets/videos/tomasMexicoFin.webm',
+        poster:'assets/videos/tomasMexicoFin.jpg',
+        scale:true,
+        loop: true,
+        zIndex: 1
+    });
+});
+</script>
 </body>
 </html>
