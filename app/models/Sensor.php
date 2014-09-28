@@ -9,7 +9,7 @@ class Sensor extends Eloquent
 
     protected $fillable = ['label', 'latitude', 'longitude'];
 
-    protected $hidden = ['user_id', 'id'];
+    protected $hidden = ['user_id', 'id', 'label'];
 
     protected $rules = [
         'latitude'  => 'required',

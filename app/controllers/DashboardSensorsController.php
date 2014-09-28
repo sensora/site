@@ -12,7 +12,7 @@ class DashboardSensorsController extends BaseController
 
     public function index()
     {
-        $sensors = $this->currentUser->sensors->paginate(15);
+        $sensors = $this->currentUser->sensors()->paginate(15);
 
         return View::make('dashboard.sensors.index', compact('sensors'));
     }
