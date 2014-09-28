@@ -59,7 +59,7 @@ class Sensor extends Eloquent
                         AND s.longitude
                             BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
                                 AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
-                        AND s.status = 1
+                        
                         having distance < $area
                         ORDER BY distance
                         LIMIT 15");

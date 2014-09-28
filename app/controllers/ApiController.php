@@ -113,7 +113,7 @@ class ApiController extends BaseController
         $uuids = explode(',', $uuid);
         $uuids = array_map('trim', $uuids);
 
-        $sensors = $this->sensor->whereIn('uuid', $uuids)->get();
+        $sensors = $this->sensor->with('data')->whereIn('uuid', $uuids)->get();
 
         return Response::json($sensors->toArray())
                 ->setCallback(Input::get('callback'));
