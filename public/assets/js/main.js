@@ -40,6 +40,9 @@ $(document).foundation();
 $(document).ready(function() {
 	cambioTamano();
 	elementoFull();
+    if (home!=true){
+        $(".top-bar").addClass('navegacionActiva');
+    }
 
 	$('.confirm').click(function(e) {
         if ( ! confirm('¿Estás seguro de realizar esta acción?') ) {

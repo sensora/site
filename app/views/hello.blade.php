@@ -104,7 +104,7 @@
 						<p>
 							Everybody is able to use Sensora's API, this is an oportunity for all the people interested 
 							in create new apps.<br />
-							Goverment, Bussinesses, Professional and Amateurs Developers. Everybody is invited 
+							Goverment, Bussinesses, Professional and Amateurs Developers. Everybody is invited, 
 							just use your imagination and start enjoying the benefits of all the available data by Sensora.
 						</p>
 						<p>
@@ -128,11 +128,14 @@
 
 				<h2>Credits</h2>
 				<p class="large-6 small-12 columns">
-					Loop video by <a href="https://vimeo.com/britishpoloday" target="_blank">British Polo Day</a>, which listed it as CC on its Vimeo's profile.
+					Loop video by <a href="https://vimeo.com/britishpoloday" target="_blank">British Polo Day</a>, and it's listed as CC on British Polo's Vimeo profile.
 				</p>
 				
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	var home=true;
+</script>
 @stop

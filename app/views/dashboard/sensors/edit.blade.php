@@ -3,9 +3,15 @@
 @section('title', 'Edit Sensor')
 
 @section('content')
-    <h1>Edit Sensor</h1>
+    <div class="sensoresBox">
+        
+        <div class="row">
+            <div class="large-12 columns">
+                <h1>Edit Sensor</h1>
+            </div>
+        </div>
 
-    {{ Form::model($sensor, ['route' => ['dashboard.sensors.edit', $sensor->id]]) }}
+        {{ Form::model($sensor, ['route' => ['dashboard.sensors.edit', $sensor->id]]) }}
         <div class="row">
             <div class="large-12 columns">
                 <label for="latitude">Label
@@ -36,5 +42,9 @@
                 {{ Form::submit('Edit', ['class' => 'button']) }}
             </div>
         </div>
+    </div>
+<script>
+    var home=false;
+</script>
     {{ Form::close() }}
 @stop

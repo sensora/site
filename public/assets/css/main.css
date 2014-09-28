@@ -1,12 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,200,100);
 
 html, body {
   padding:0px;
   margin:0px;
   width:100%;
   min-height: 100%;
-  background-color:#000;
-  font: 100 18px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color:#fff;
+  font: 200 18px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fff;
 }
 
@@ -18,11 +18,13 @@ a img, table { border:none; }
 .hiddenInfo { display:none!important; visibility:hidden; position:absolute; }
 a { color:#8a8a8a; text-decoration:none; }
 a:hover, a.actual { color:#383838; }
-textarea, .entrada { resize:none; font: 100 36px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px; }
+textarea, .entrada { resize:none; font: 200 36px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px; }
 * { outline:none; font-weight:100; cursor:default; }
 a, a img { cursor:pointer; }
 
 header, section, footer, aside, nav, article, figure { display: block; }
+
+h1, h2, h3, h4 { font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 200; }
 
 .top-bar { background-color: transparent; position: fixed; width: 100%; z-index: 30; }
 .navegacionActiva { background-color: #1F2022; }
