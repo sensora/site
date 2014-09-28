@@ -35,4 +35,32 @@ class Sensor extends Eloquent
     {
         return $query->where('status', '=', true);
     }
+
+    public function near($latitude, $longitude, $area)
+    {
+        $latitude   = DB::getPdo()->quote($latitude);
+        $longitude  = DB::getPdo()->quote($longitude);
+        $area       = DB::getPdo()->quote($area);
+
+        return DB::select("SELECT s.id, s.uuid, s.latitude, s.longitude,
+                            111.045 * DEGREES(ACOS(COS(RADIANS(p.latpoint))
+                                    * COS(RADIANS(s.latitude))
+                                    * COS(RADIANS(p.longpoint) - RADIANS(s.longitude))
+                                    + SIN(RADIANS(p.latpoint))
+                                    * SIN(RADIANS(s.latitude)))) AS distance
+                        FROM sensors s
+                        JOIN (
+                            SELECT  $latitude  AS latpoint,  $longitude AS longpoint,
+                                    $area AS radius,      111.045 AS distance_unit
+                        ) AS p
+                        WHERE s.latitude
+                                BETWEEN p.latpoint  - (p.radius / p.distance_unit)
+                                    AND p.latpoint  + (p.radius / p.distance_unit)
+                        AND s.longitude
+                            BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+                                AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+                        AND s.status = 1
+                        ORDER BY distance
+                        LIMIT 15");
+    }
 }
