@@ -6,7 +6,7 @@ html, body {
   width:100%;
   min-height: 100%;
   background-color:#000;
-  font: 100 15px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: 100 18px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fff;
 }
 
@@ -25,7 +25,7 @@ a, a img { cursor:pointer; }
 header, section, footer, aside, nav, article, figure { display: block; }
 
 .top-bar { background-color: transparent; position: fixed; width: 100%; z-index: 30; }
-.navegacionActiva { background-color: #333; }
+.navegacionActiva { background-color: #1F2022; }
 
 .logo { display:block; width: 138px; height: 50px; background-image: url('../img/misc/sensoraName2.png'); 
 	-moz-transition:all ease .6s;
@@ -49,8 +49,7 @@ header, section, footer, aside, nav, article, figure { display: block; }
 .welcomeBox { background-color: rgba(255,187,0,0.8); color: #ffffff; position: absolute; left: 0; top: 50%; margin-top: -100px; width: 520px; padding: 20px 40px; font: 100 36px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif; text-align: left; }
 
 
-.textoIntro { background-color: #fff; color: #000; padding-top: 90px; }
-.textoIntro h2 { text-align: center; padding-bottom: 80px; }
+
 
 .sticky { background: none; position: relative; z-index: 30;}
 
