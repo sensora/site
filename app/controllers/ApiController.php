@@ -6,14 +6,16 @@ class ApiController extends BaseController
     protected $user;
     protected $sensor;
     protected $apikey;
+    protected $data;
 
-    public function __construct(User $user, Sensor $sensor, ApiKey $apikey)
+    public function __construct(User $user, Sensor $sensor, ApiKey $apikey, Data $data)
     {
         parent::__construct();
 
         $this->sensor   = $sensor;
         $this->user     = $user;
         $this->apikey   = $apikey;
+        $this->data     = $data;
 
         $this->beforeFilter('@checkValidSensor', ['only' => ['sensorUpload']]);
         $this->beforeFilter('@checkApiKey', ['only' => ['sensorInfo', 'locateSensors']]);
@@ -67,6 +69,17 @@ class ApiController extends BaseController
 
     public function sensorUpload()
     {
+        try {
+            $sensor = $this->sensor->where('uuid', '=', $sensorId)->firstOrFail();
+        }catch(ModelNotFoundException $e) {
+            return Response::json(array(
+                'success'   =>  false,
+                'error'     =>  array(
+                    'message'   =>  'Sensor not found.'
+                ),
+            ))->setCallback(Input::get('callback'));
+        }
+
         $temperature    =   Input::get('temperature');
         $moisture       =   Input::get('moisture');
         $altitude       =   Input::get('altitude');
@@ -75,6 +88,26 @@ class ApiController extends BaseController
         $light          =   Input::get('light');
 
         $created_at     =   Input::get('created_at');
+
+        $dataRaw = [
+            'sensor_id'     =>  $sensor->id,
+            'temperature'   =>  $temperature,
+            'moisture'      =>  $moisture,
+            'altitude'      =>  $altitude,
+            'pressure'      =>  $pressure,
+            'noise'         =>  $sound,
+            'light'         =>  $light,
+        ];
+
+        if ( $created_at ) {
+            $dataRaw['created_at'] =    $created_at;
+        }
+
+        $this->data->create($dataRaw);
+
+        return Response::json([
+            'success'   =>  true,
+        ])->setCallback(Input::get('callback'));
     }
 
     public function sensorInfo($uuid = null)
@@ -88,8 +121,26 @@ class ApiController extends BaseController
                 ->setCallback(Input::get('callback'));
     }
 
-    public function locateSensors($latitude = null, $longitude = null, $areasize = '2')
+    public function sensorData($uuid, $from = null, $to = null)
     {
-        //
+        $result = $this->sensor->with('data')->where('uuid', '=', $uuid)->get();
+
+        return Response::json($result)
+                ->setCallback(Input::get('callback'));
+    }
+
+    public function locateSensors($latitude = null, $longitude = null, $areasize = '5')
+    {
+        $sensors = $this->sensor->near($latitude, $longitude, $areasize);
+
+        // $response = [];
+        // foreach ($sensors as $sensor) {
+        //     $sensor->data = $this->data->where('sensor_id', '=', $sensor->id)->get();
+
+        //     $response[] = $sensor;
+        // }
+
+        return Response::json($sensors)
+                ->setCallback(Input::get('callback'));
     }
 }

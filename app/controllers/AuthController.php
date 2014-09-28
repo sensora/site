@@ -24,7 +24,7 @@ class AuthController extends BaseController
 
 		if ( ! Auth::attempt( $credentials, true ) ) {
 			return Redirect::route('auth.login')
-					->withErrors('');
+					->withErrors('JWrong email or password.');
 		}
 
 		return Redirect::intended('dashboard');

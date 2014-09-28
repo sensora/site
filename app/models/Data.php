@@ -9,6 +9,8 @@ class Data extends Eloquent
 
     protected $dates = ['deleted_at'];
 
+    protected $hidden = ['id', 'sensor_id', 'deleted_at', 'updated_at'];
+
     public function sensor()
     {
         return $this->hasOne('Sensor');

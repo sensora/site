@@ -49,6 +49,9 @@
                     </div>
                 </div>
                 @endif
+                <div class="large-12 columns">
+                    <a href="/payment" class="button button-primary">Add API Credits</a>
+                </div>
             </div>
         </div>
     </div>

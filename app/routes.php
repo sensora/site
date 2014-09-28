@@ -55,9 +55,20 @@ Route::group(['before' => 'auth', 'prefix' => 'profile'], function() {
 	Route::post('api/revoke', ['as' => 'profile.api.revoke', 'uses' => 'ProfileController@revokeApiKey', 'before' => 'csrf']);
 });
 
+
+
+/***
+* Payments
+*/
+Route::group(['before' => 'auth', 'prefix' => 'payment'], function() {
+	Route::get('/', ['uses' => 'PaypalPaymentController@create']);
+	Route::get('list', ['uses' => 'PaypalPaymentController@getAll']);
+	Route::get('confirmpayment', ['uses' => 'PaypalPaymentController@getConfirmpayment']);
+});
 /**
  * API
  */
+
 Route::group(['prefix' => 'api'], function() {
 	Route::get('locate/{latitude}/{longitude}/{areasize?}', ['as' => 'api.locate', 'uses' => 'ApiController@locateSensors']);
 
@@ -66,6 +77,6 @@ Route::group(['prefix' => 'api'], function() {
 
 		Route::get('{uuid}', ['as' => 'api.sensor.upload', 'uses' => 'ApiController@sensorInfo']);
 
-		Route::get('{uuid}/{from}/{to}', ['as' => 'api.sensor.info', 'uses' => 'ApiController@locateSensors']);
+		Route::get('{uuid}/{from?}/{to?}', ['as' => 'api.sensors.data', 'uses' => "ApiController@sensorData"]);
 	});
 });
