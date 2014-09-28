@@ -86,26 +86,28 @@ class ApiController extends BaseController
 
         $data = json_decode($rawPostData);
 
-        foreach ($data->data as $row) {
-            $dataRaw = [
-                'sensor_id'     =>  $sensor->id,
-                'temperature'   =>  isset($row->temperature) ? $row->temperature : null,
-                'moisture'      =>  isset($row->moisture) ? $row->moisture : null,
-                'pressure'      =>  isset($row->pressure) ? $row->pressure : null,
-                'noise'         =>  isset($row->noise) ? $row->noise : null,
-                'light'         =>  isset($row->light) ? $row->light : null,
-            ];
+        if ( isset ($data->data) ) {
+            foreach ($data->data as $row) {
+                $dataRaw = [
+                    'sensor_id'     =>  $sensor->id,
+                    'temperature'   =>  isset($row->temperature) ? $row->temperature : null,
+                    'moisture'      =>  isset($row->moisture) ? $row->moisture : null,
+                    'pressure'      =>  isset($row->pressure) ? $row->pressure : null,
+                    'noise'         =>  isset($row->noise) ? $row->noise : null,
+                    'light'         =>  isset($row->light) ? $row->light : null,
+                ];
 
-            if ( isset($row->created_at) ) {
-                $dataRaw['created_at'] =    $row->created_at;
+                if ( isset($row->created_at) ) {
+                    $dataRaw['created_at'] =    $row->created_at;
+                }
+
+                $this->data->create($dataRaw);
             }
 
-            $this->data->create($dataRaw);
+            return Response::json([
+                'success'   =>  true,
+            ])->setCallback(Input::get('callback'));
         }
-
-        return Response::json([
-            'success'   =>  true,
-        ])->setCallback(Input::get('callback'));
     }
 
     public function sensorInfo($uuid = null)

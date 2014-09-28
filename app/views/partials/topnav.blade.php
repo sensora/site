@@ -16,7 +16,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/payments">Credits</a>
+                    <a href="{{ route('payments.index') }}">Credits</a>
                 </li>
             </ul>
             @endif

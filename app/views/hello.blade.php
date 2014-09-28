@@ -21,8 +21,8 @@
 
 				<h2>What's sensora?</h2>
 				<p class="large-6 small-12 columns">
-					A complete sensor grid network that provides precise open real time data.<br />
-					This data can be used for improving your locality
+					A complete sensor grid network that provides precise open real time data.
+					This data can be used for improving your locality.
 				</p>
 				<p class="large-6 small-12 columns">
 					<img src="{{ asset('assets/img/animaciones/step02.gif') }}" />
@@ -71,7 +71,7 @@
 				<h2>The possibilities are endless</h2>
 				<div class="row">
 					<div class="large-6 small-12 columns">
-						<h3>Improving the movility</h3>
+						<h3>Improving the mobility</h3>
 						<p>
 							How about an app which not only gives you a route for your destination but also dodge the rainy clouds when possible. <br />
 							Where geographical apps just give you straight routes and the wheater apps only say your city is under rain, Sensora based apps 
@@ -104,7 +104,7 @@
 						<p>
 							Everybody is able to use Sensora's API, this is an oportunity for all the people interested 
 							in create new apps.<br />
-							Goverment, Bussinesses, Professional and Amateurs Developers. Everybody is invited 
+							Goverment, Bussinesses, Professional and Amateurs Developers. Everybody is invited, 
 							just use your imagination and start enjoying the benefits of all the available data by Sensora.
 						</p>
 						<p>
@@ -128,7 +128,7 @@
 
 				<h2>Credits</h2>
 				<p class="large-6 small-12 columns">
-					Loop video by <a href="https://vimeo.com/britishpoloday" target="_blank">British Polo Day</a>, which listed it as CC on its Vimeo's profile.
+					Loop video by <a href="https://vimeo.com/britishpoloday" target="_blank">British Polo Day</a>, and it's listed as CC on British Polo's Vimeo profile.
 				</p>
 				
 			</div>

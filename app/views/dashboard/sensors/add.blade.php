@@ -3,9 +3,14 @@
 @section('title', 'New Sensor')
 
 @section('content')
-    <h1>New Sensor</h1>
+    <div class="sensoresBox">
+        <div class="row">
+            <div class="large-12 columns">
+                <h1>New Sensor</h1>
+            </div>
+        </div>
 
-    {{ Form::open(['route' => 'dashboard.sensors.add']) }}
+        {{ Form::open(['route' => 'dashboard.sensors.add']) }}
         <div class="row">
             <div class="large-12 columns">
                 <label for="latitude">Label
@@ -36,5 +41,6 @@
                 {{ Form::submit('Add', ['class' => 'button']) }}
             </div>
         </div>
+    </div>
     {{ Form::close() }}
 @stop

@@ -1,5 +1,6 @@
 var anchoPagina;
 var altoPagina;
+var home=false;
 
 function adjustStyle(width,height) {
     width = parseInt(width);
@@ -40,6 +41,9 @@ $(document).foundation();
 $(document).ready(function() {
 	cambioTamano();
 	elementoFull();
+    if (home!=true){
+        $(".top-bar").addClass('navegacionActiva');
+    }
 
 	$('.confirm').click(function(e) {
         if ( ! confirm('¿Estás seguro de realizar esta acción?') ) {
@@ -48,11 +52,5 @@ $(document).ready(function() {
     });
 
 
-	$(window).scroll(function(e) {
-		var scroll_position 	= $(window).scrollTop();
-		var centroPantalla 		= scroll_position + altoPagina;
-
-		if(scroll_position >= (altoPagina/2)-150){ $(".top-bar").addClass('navegacionActiva'); }
-		else { $(".top-bar").removeClass('navegacionActiva'); }
-	});
+	
 });
