@@ -21,8 +21,8 @@
 
 				<h2>What's sensora?</h2>
 				<p class="large-6 small-12 columns">
-					A complete sensor grid network that provides precise open real time data.<br />
-					This data can be used for improving your locality
+					A complete sensor grid network that provides precise open real time data.
+					This data can be used for improving your locality.
 				</p>
 				<p class="large-6 small-12 columns">
 					<img src="{{ asset('assets/img/animaciones/step02.gif') }}" />

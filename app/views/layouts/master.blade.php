@@ -33,6 +33,30 @@
     ga('send', 'pageview');
 
     </script>
+
+    <meta name="description" content="A sensor collects enviromental data, such as temperature, atmospheric pressure, humity, light and noise intensity, altitude, plus others. These sensors send the data to the Open API so other users be able to consult it." />
+        <!-- Google Authorship and Publisher Markup -->
+    <link rel="author" href="https://plus.google.com/+Sensora/posts"/>
+    <link rel="publisher" href="https://plus.google.com/+Sensora"/>
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Open data sensor grid network feeded by sensors scatered around the city.">
+    <meta itemprop="description" content="A sensor collects enviromental data, such as temperature, atmospheric pressure, humity, light and noise intensity, altitude, plus others. These sensors send the data to the Open API so other users be able to consult it.">
+    <meta itemprop="image" content="https://www.sensora.net/assets/img/sensora.jpg">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="https://www.sensora.net/assets/img/sensora.jpg">
+    <meta name="twitter:site" content="@sensoranet">
+    <meta name="twitter:title" content="Open data sensor grid network feeded by sensors scatered around the city.">
+    <meta name="twitter:description" content="A sensor collects enviromental data, such as temperature, atmospheric pressure, humity, light and noise intensity, altitude, plus others. These sensors send the data to the Open API so other users be able to consult it.">
+    <meta name="twitter:creator" content="@sensoranet">
+    <!-- Twitter summary card with large image must be at least 280x150px -->
+    <meta name="twitter:image:src" content="https://www.sensora.net/assets/img/sensora.jpg">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Open data sensor grid network feeded by sensors scatered around the city." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.sensora.net" />
+    <meta property="og:image" content="https://www.sensora.net/assets/img/sensora.jpg" />
+    <meta property="og:description" content="A sensor collects enviromental data, such as temperature, atmospheric pressure, humity, light and noise intensity, altitude, plus others. These sensors send the data to the Open API so other users be able to consult it." />
+    <meta property="og:site_name" content="Open data sensor grid network feeded by sensors scatered around the city." />
 </head>
 <body>
     @include('partials.topnav')
