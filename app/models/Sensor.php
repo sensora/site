@@ -21,6 +21,6 @@ class Sensor extends Eloquent
 
     public function getNameAttribute()
     {
-        return empty($this->label) ? $this->uuid : sprintf('%s <span class="opaque">( %s )</span>', $this->label, $this->uuid);
+        return empty($this->label) ? $this->uuid : sprintf('%s <span class="opaque">( %s )</span>', e($this->label), $this->uuid);
     }
 }

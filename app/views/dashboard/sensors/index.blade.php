@@ -21,11 +21,12 @@
             @foreach ($sensors as $sensor)
             <tr>
                 <td>{{ $sensor->name }}</td>
-                <td>{{ $sensor->latitude }}</td>
-                <td>{{ $sensor->longitude }}</td>
-                <td>{{ $sensor->altitude or 'N/A' }}</td>
-                <td>{{ $sensor->status ? 'Activo' : 'Inactivo' }}</td>
+                <td>{{{ $sensor->latitude }}}</td>
+                <td>{{{ $sensor->longitude }}}</td>
+                <td>{{{ $sensor->altitude or 'N/A' }}}</td>
+                <td>{{ $sensor->status ? '<span class="label success">Active</span>' : '<span class="label alert">Inactive</span>' }}</td>
                 <td>
+                    <a href="#" class="openMapModal" data-latitude="{{{ $sensor->latitude }}}" data-longitude="{{{ $sensor->longitude }}}"><i class="fa fa-globe"></i></a>
                     <a href="{{ route('dashboard.sensors.edit', $sensor->id) }}"><i class="fa fa-pencil-square-o"></i></a>
                     <a class="confirm" href="{{ route('dashboard.sensors.delete', $sensor->id) }}"><i class="fa fa-times"></i></a>
                 </td>
