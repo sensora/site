@@ -17,6 +17,13 @@
                 <th>Controls</th>
             </tr>
         </thead>
+        <tfoot>
+            <th>
+                <td colspan="5">
+                    <?php echo $sensors->links(); ?>
+                </td>
+            </th>
+        </tfoot>
         <tbody>
             @if ( count($sensors) > 0 )
             @foreach ($sensors as $sensor)
